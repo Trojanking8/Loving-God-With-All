@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loving God With All</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --deep: #1A1209;
+    --parchment: #F7F0E3;
+    --parchment-dark: #EDE0C8;
+    --text: #2C1F0E;
+    --muted: #8B7355;
+    --white: #FFFDF7;
+
+```
+/* Word-specific accent colors */
+--heart-accent: #6B2D2D;
+--heart-glow: #8B3333;
+--soul-accent: #1E3A5F;
+--soul-glow: #2A5080;
+--mind-accent: #2D4A2D;
+--mind-glow: #3A6B3A;
+--strength-accent: #4A3520;
+--strength-glow: #6B4E2A;
+
+--current-accent: var(--heart-accent);
+--current-glow: var(--heart-glow);
+```
+
+}
+
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background-color: var(–deep);
+color: var(–text);
+font-family: ‘Lato’, sans-serif;
+min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+background: linear-gradient(160deg, #1A1209 0%, #2E1F0A 60%, #3D2910 100%);
+padding: 28px 20px 20px;
+text-align: center;
+border-bottom: 1px solid var(–gold);
+position: relative;
+overflow: hidden;
+}
+
+.header-label {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 6px;
+}
+
+.header h1 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 28px;
+font-weight: 300;
+color: var(–parchment);
+line-height: 1.2;
+margin-bottom: 6px;
+}
+
+.header h1 em {
+font-style: italic;
+color: var(–gold-light);
+}
+
+.header-verse {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 13px;
+color: var(–muted);
+line-height: 1.5;
+max-width: 320px;
+margin: 0 auto 16px;
+}
+
+/* WORD SELECTOR */
+.word-selector {
+display: flex;
+gap: 8px;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 4px;
+}
+
+.word-btn {
+padding: 7px 16px;
+border-radius: 30px;
+border: 1px solid #5A3D1A;
+background: transparent;
+color: var(–muted);
+font-family: ‘Lato’, sans-serif;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.25s;
+}
+
+.word-btn.heart.active  { background: #6B2D2D; border-color: #C9A84C; color: var(–gold-light); }
+.word-btn.soul.active   { background: #1E3A5F; border-color: #7BAFD4; color: #C5E0F0; }
+.word-btn.mind.active   { background: #2D4A2D; border-color: #7BBD7B; color: #C5E8C5; }
+.word-btn.strength.active { background: #4A3520; border-color: #C9A84C; color: var(–gold-light); }
+
+.word-btn:not(.active):hover { border-color: var(–gold); color: var(–gold); }
+
+/* Active word banner */
+.active-word-banner {
+padding: 10px 20px;
+text-align: center;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+transition: background 0.3s;
+}
+
+.banner-heart     { background: #6B2D2D; color: #F5C5C5; }
+.banner-soul      { background: #1E3A5F; color: #C5E0F0; }
+.banner-mind      { background: #2D4A2D; color: #C5E8C5; }
+.banner-strength  { background: #4A3520; color: var(–gold-light); }
+
+/* NAV TABS */
+.nav-tabs {
+display: flex;
+background: #120D05;
+border-bottom: 1px solid #3D2910;
+}
+
+.tab-btn {
+flex: 1;
+padding: 13px 8px;
+background: none;
+border: none;
+color: var(–muted);
+font-family: ‘Lato’, sans-serif;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+cursor: pointer;
+border-bottom: 2px solid transparent;
+transition: all 0.2s;
+}
+
+.tab-btn.active { color: var(–gold); border-bottom-color: var(–gold); }
+
+/* SCREENS */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* STUDY SCREEN */
+.study-screen {
+background: var(–parchment);
+min-height: calc(100vh - 200px);
+padding-bottom: 80px;
+}
+
+.section-header {
+background: var(–parchment-dark);
+padding: 14px 20px;
+border-bottom: 1px solid #D4C4A8;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.section-num {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+background: var(–gold);
+color: var(–deep);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 11px;
+font-weight: 700;
+flex-shrink: 0;
+}
+
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 17px;
+font-weight: 600;
+color: var(–heart-accent);
+transition: color 0.3s;
+}
+
+.section-title.soul-color     { color: var(–soul-accent); }
+.section-title.mind-color     { color: var(–mind-accent); }
+.section-title.strength-color { color: var(–strength-accent); }
+
+.section-sub {
+font-size: 11px;
+color: var(–muted);
+margin-top: 1px;
+}
+
+.field-block {
+padding: 14px 20px;
+border-bottom: 1px solid #E5D9C5;
+}
+
+.field-label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 6px;
+}
+
+.field-hint {
+font-size: 12px;
+color: #A08C6E;
+margin-bottom: 8px;
+font-style: italic;
+line-height: 1.5;
+}
+
+textarea, input[type=“text”] {
+width: 100%;
+background: var(–white);
+border: 1px solid #D4C4A8;
+border-radius: 6px;
+padding: 12px 14px;
+font-family: ‘Lato’, sans-serif;
+font-size: 15px;
+color: var(–text);
+line-height: 1.6;
+resize: none;
+outline: none;
+transition: border-color 0.2s;
+}
+
+textarea:focus, input[type=“text”]:focus { border-color: var(–gold); }
+textarea { min-height: 90px; }
+textarea.tall { min-height: 130px; }
+
+.translation-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+margin-top: 4px;
+}
+
+.trans-item label {
+display: block;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1px;
+color: var(–gold);
+margin-bottom: 4px;
+text-transform: uppercase;
+}
+
+.trans-item textarea { min-height: 70px; font-size: 13px; }
+.trans-item input { font-size: 13px; margin-bottom: 6px; }
+
+/* Dynamic section — changes color per word */
+.dynamic-section {
+padding: 20px;
+transition: background 0.3s;
+}
+
+.dynamic-heart    { background: linear-gradient(135deg, #3D1515, #1A1209); }
+.dynamic-soul     { background: linear-gradient(135deg, #0E1F35, #070F1A); }
+.dynamic-mind     { background: linear-gradient(135deg, #142814, #081208); }
+.dynamic-strength { background: linear-gradient(135deg, #2E1F0A, #1A1209); }
+
+.dynamic-section .field-label { color: var(–gold-light); }
+.dynamic-section .field-hint  { color: #A08060; }
+
+.dynamic-section textarea {
+background: rgba(255,255,255,0.06);
+border-color: #5A3D1A;
+color: var(–parchment);
+min-height: 150px;
+}
+
+.dynamic-section textarea:focus { border-color: var(–gold); }
+.dynamic-section textarea::placeholder { color: #6B5030; }
+
+/* Word-specific prompts */
+.word-prompt {
+display: none;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 16px;
+font-style: italic;
+text-align: center;
+padding: 12px 20px 0;
+line-height: 1.6;
+opacity: 0.7;
+}
+
+.word-prompt.visible { display: block; }
+.prompt-heart    { color: #F5C5C5; }
+.prompt-soul     { color: #C5E0F0; }
+.prompt-mind     { color: #C5E8C5; }
+.prompt-strength { color: var(–gold-light); }
+
+/* Action bar */
+.action-bar {
+padding: 14px 20px;
+background: var(–parchment-dark);
+border-top: 1px solid #D4C4A8;
+display: flex;
+gap: 10px;
+}
+
+.btn {
+flex: 1;
+padding: 14px;
+border: none;
+border-radius: 8px;
+font-family: ‘Lato’, sans-serif;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.btn-save { background: var(–gold); color: var(–deep); }
+.btn-save:active { background: #B8932E; }
+.btn-clear { background: transparent; color: var(–muted); border: 1px solid #C4B49A; }
+.btn-clear:active { background: #E5D9C5; }
+
+.gold-divider {
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+margin: 0 20px;
+opacity: 0.3;
+}
+
+/* ENTRIES SCREEN */
+.entries-screen {
+background: var(–deep);
+min-height: calc(100vh - 200px);
+padding: 16px 16px 80px;
+}
+
+/* Filter pills */
+.filter-row {
+display: flex;
+gap: 8px;
+margin-bottom: 16px;
+overflow-x: auto;
+scrollbar-width: none;
+padding-bottom: 4px;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+
+.filter-pill {
+padding: 6px 14px;
+border-radius: 20px;
+border: 1px solid #3D2910;
+background: transparent;
+color: var(–muted);
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+cursor: pointer;
+white-space: nowrap;
+transition: all 0.2s;
+}
+
+.filter-pill.active-all      { background: #3D2910; color: var(–gold); border-color: var(–gold); }
+.filter-pill.active-heart    { background: #6B2D2D; color: #F5C5C5; border-color: #8B3333; }
+.filter-pill.active-soul     { background: #1E3A5F; color: #C5E0F0; border-color: #2A5080; }
+.filter-pill.active-mind     { background: #2D4A2D; color: #C5E8C5; border-color: #3A6B3A; }
+.filter-pill.active-strength { background: #4A3520; color: var(–gold-light); border-color: #6B4E2A; }
+
+.entries-count {
+font-size: 10px;
+color: #5A4530;
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 12px;
+font-weight: 700;
+}
+
+.entries-empty {
+text-align: center;
+padding: 50px 20px;
+}
+
+.entries-empty .icon { font-size: 36px; margin-bottom: 14px; opacity: 0.3; }
+
+.entries-empty p {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 17px;
+font-style: italic;
+color: #5A4530;
+}
+
+.entry-card {
+border-radius: 10px;
+padding: 14px 16px;
+margin-bottom: 10px;
+cursor: pointer;
+border: 1px solid;
+transition: opacity 0.2s;
+}
+
+.entry-card:active { opacity: 0.7; }
+.card-heart    { background: #1F0C0C; border-color: #5A2020; }
+.card-soul     { background: #0A1525; border-color: #1A3050; }
+.card-mind     { background: #0C1A0C; border-color: #1A3A1A; }
+.card-strength { background: #1A1005; border-color: #3D2910; }
+
+.entry-top {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 6px;
+}
+
+.entry-ref {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+font-weight: 600;
+}
+
+.ref-heart    { color: #F5A0A0; }
+.ref-soul     { color: #A0C8F0; }
+.ref-mind     { color: #A0D0A0; }
+.ref-strength { color: var(–gold-light); }
+
+.entry-word-tag {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 3px 8px;
+border-radius: 10px;
+}
+
+.tag-heart    { background: #6B2D2D; color: #F5C5C5; }
+.tag-soul     { background: #1E3A5F; color: #C5E0F0; }
+.tag-mind     { background: #2D4A2D; color: #C5E8C5; }
+.tag-strength { background: #4A3520; color: var(–gold-light); }
+
+.entry-preview {
+font-size: 12px;
+color: var(–muted);
+line-height: 1.5;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+margin-bottom: 6px;
+}
+
+.entry-bottom {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.entry-date { font-size: 10px; color: #4A3520; letter-spacing: 1px; }
+
+.entry-delete {
+background: none;
+border: none;
+color: #4A3520;
+font-size: 18px;
+cursor: pointer;
+padding: 0;
+line-height: 1;
+}
+
+/* DETAIL SCREEN */
+.detail-screen {
+background: var(–parchment);
+min-height: calc(100vh - 200px);
+padding-bottom: 80px;
+}
+
+.detail-back {
+background: var(–parchment-dark);
+border: none;
+border-bottom: 1px solid #D4C4A8;
+padding: 14px 20px;
+font-family: ‘Lato’, sans-serif;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–gold);
+cursor: pointer;
+width: 100%;
+text-align: left;
+}
+
+.detail-content { padding: 20px; }
+
+.detail-ref {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 26px;
+font-weight: 600;
+margin-bottom: 4px;
+}
+
+.detail-word-tag {
+display: inline-block;
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 3px 10px;
+border-radius: 10px;
+margin-bottom: 20px;
+}
+
+.detail-field { margin-bottom: 18px; }
+
+.detail-field-label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 6px;
+}
+
+.detail-field-value {
+font-size: 15px;
+color: var(–text);
+line-height: 1.7;
+white-space: pre-wrap;
+}
+
+.detail-revelation {
+border-radius: 10px;
+padding: 20px;
+margin-top: 8px;
+}
+
+.rev-heart    { background: linear-gradient(135deg, #3D1515, #1A1209); }
+.rev-soul     { background: linear-gradient(135deg, #0E1F35, #070F1A); }
+.rev-mind     { background: linear-gradient(135deg, #142814, #081208); }
+.rev-strength { background: linear-gradient(135deg, #2E1F0A, #1A1209); }
+
+.detail-revelation .detail-field-label { color: var(–gold); }
+.detail-revelation .detail-field-value { color: var(–parchment-dark); }
+
+/* ABOUT SCREEN */
+.about-screen {
+background: var(–deep);
+min-height: calc(100vh - 200px);
+padding: 24px 20px 80px;
+color: var(–parchment);
+}
+
+.about-verse-card {
+background: #221608;
+border: 1px solid var(–gold);
+border-radius: 12px;
+padding: 22px 20px;
+margin-bottom: 24px;
+text-align: center;
+}
+
+.about-verse-card .verse-ref {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 12px;
+}
+
+.about-verse-card .verse-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 19px;
+font-style: italic;
+color: var(–parchment);
+line-height: 1.7;
+}
+
+/* Four words display */
+.four-words {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+margin: 16px 0;
+}
+
+.word-card {
+border-radius: 10px;
+padding: 16px;
+text-align: center;
+border: 1px solid;
+}
+
+.wc-heart    { background: #1F0C0C; border-color: #6B2D2D; }
+.wc-soul     { background: #0A1525; border-color: #1E3A5F; }
+.wc-mind     { background: #0C1A0C; border-color: #2D4A2D; }
+.wc-strength { background: #1A1005; border-color: #4A3520; }
+
+.word-card-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+font-weight: 600;
+margin-bottom: 4px;
+}
+
+.wn-heart    { color: #F5A0A0; }
+.wn-soul     { color: #A0C8F0; }
+.wn-mind     { color: #A0D0A0; }
+.wn-strength { color: var(–gold-light); }
+
+.word-card-heb {
+font-size: 10px;
+color: var(–muted);
+letter-spacing: 1px;
+}
+
+.word-card-status {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-top: 8px;
+padding: 3px 8px;
+border-radius: 10px;
+display: inline-block;
+}
+
+.status-active   { background: var(–gold); color: var(–deep); }
+.status-upcoming { background: #3D2910; color: #6B5030; }
+
+.about-section { margin-bottom: 22px; }
+
+.about-section h3 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+color: var(–gold-light);
+margin-bottom: 10px;
+}
+
+.about-section p {
+font-size: 13px;
+color: #A08060;
+line-height: 1.8;
+margin-bottom: 8px;
+}
+
+.trans-list {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-top: 8px;
+}
+
+.trans-pill {
+background: #3D2910;
+color: var(–gold-light);
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 1px;
+padding: 5px 12px;
+border-radius: 20px;
+}
+
+.trans-pill.anchor { background: var(–gold); color: var(–deep); }
+
+/* Toast */
+.toast {
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%) translateY(20px);
+background: var(–gold);
+color: var(–deep);
+padding: 12px 24px;
+border-radius: 30px;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1px;
+opacity: 0;
+transition: all 0.3s;
+pointer-events: none;
+white-space: nowrap;
+z-index: 999;
+}
+
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+  <div class="header-label">A Spirit-Led Journey Through the Great Commandment</div>
+  <h1>Loving God <em>With All</em></h1>
+  <div class="header-verse">"Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength." — Mark 12:30</div>
+
+  <div class="word-selector">
+    <button class="word-btn heart active" onclick="setWord('heart')">❤ Heart</button>
+    <button class="word-btn soul" onclick="setWord('soul')">✦ Soul</button>
+    <button class="word-btn mind" onclick="setWord('mind')">✧ Mind</button>
+    <button class="word-btn strength" onclick="setWord('strength')">⚡ Strength</button>
+  </div>
+</div>
+
+<!-- ACTIVE WORD BANNER -->
+
+<div class="active-word-banner banner-heart" id="word-banner">
+  Currently Studying: ❤ HEART
+</div>
+
+<!-- NAV TABS -->
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="showTab('study')">✦ Study</button>
+  <button class="tab-btn" onclick="showTab('entries')">Entries</button>
+  <button class="tab-btn" onclick="showTab('about')">About</button>
+</div>
+
+<!-- ===================== STUDY SCREEN ===================== -->
+
+<div id="screen-study" class="screen active">
+  <div class="study-screen">
+
+```
+<!-- 1. The Verse -->
+<div class="section-header">
+  <div class="section-num">1</div>
+  <div>
+    <div class="section-title" id="s1-title">The Verse</div>
+    <div class="section-sub">Your anchor translation (ESV or NASB)</div>
+  </div>
+</div>
+<div class="field-block">
+  <div class="field-label">Scripture Reference</div>
+  <input type="text" id="f-ref" placeholder="e.g. Psalm 51:10" />
+</div>
+<div class="field-block">
+  <div class="field-label">Write Out the Verse</div>
+  <div class="field-hint">Writing it out slows you down and opens your heart to receive.</div>
+  <textarea id="f-verse" class="tall" placeholder="Write the verse in full…"></textarea>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- 2. Compare Translations -->
+<div class="section-header">
+  <div class="section-num">2</div>
+  <div>
+    <div class="section-title" id="s2-title">Compare Translations</div>
+    <div class="section-sub">Note meaningful differences</div>
+  </div>
+</div>
+<div class="field-block">
+  <div class="field-hint">AMP is especially useful for expanding the original meaning of words.</div>
+  <div class="translation-grid">
+    <div class="trans-item">
+      <label>Translation 1</label>
+      <input type="text" id="f-trans1-name" placeholder="e.g. AMP" />
+      <textarea id="f-trans1" placeholder="What stands out?"></textarea>
+    </div>
+    <div class="trans-item">
+      <label>Translation 2</label>
+      <input type="text" id="f-trans2-name" placeholder="e.g. KJV" />
+      <textarea id="f-trans2" placeholder="What stands out?"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- 3. Context -->
+<div class="section-header">
+  <div class="section-num">3</div>
+  <div>
+    <div class="section-title" id="s3-title">Context</div>
+    <div class="section-sub">Who, to whom, and what situation</div>
+  </div>
+</div>
+<div class="field-block">
+  <div class="field-hint">Who is speaking? Who are they speaking to? What's happening in this passage?</div>
+  <textarea id="f-context" placeholder="Describe the context of this verse…"></textarea>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- 4. Human dimension -->
+<div class="section-header">
+  <div class="section-num">4</div>
+  <div>
+    <div class="section-title" id="s4-title">The Human Heart</div>
+    <div class="section-sub" id="s4-sub">What does this reveal about man's heart?</div>
+  </div>
+</div>
+<div class="field-block">
+  <div class="field-hint" id="s4-hint">What does this verse show about the nature, condition, or capacity of the human heart?</div>
+  <textarea id="f-human" placeholder="What is being said about the heart of man here?"></textarea>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- 5. God's dimension -->
+<div class="section-header">
+  <div class="section-num">5</div>
+  <div>
+    <div class="section-title" id="s5-title">God's Heart</div>
+    <div class="section-sub" id="s5-sub">What does this reveal about the Lord?</div>
+  </div>
+</div>
+<div class="field-block">
+  <div class="field-hint" id="s5-hint">What does this verse show about what God desires, feels, or knows?</div>
+  <textarea id="f-god" placeholder="What does this say about God's heart toward us?"></textarea>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- 6. Mark 12:30 Connection -->
+<div class="section-header">
+  <div class="section-num">6</div>
+  <div>
+    <div class="section-title" id="s6-title">Connection to Mark 12:30</div>
+    <div class="section-sub" id="s6-sub">Loving God with all your heart</div>
+  </div>
+</div>
+<div class="field-block">
+  <div class="field-hint" id="s6-hint">How does this verse deepen your understanding of what it means to love God wholeheartedly?</div>
+  <textarea id="f-connection" placeholder="How does this connect to the Great Commandment?"></textarea>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- 7. Holy Spirit -->
+<div class="dynamic-section dynamic-heart" id="revelation-block">
+  <div class="word-prompt prompt-heart visible" id="prompt-heart">"Search me, O God, and know my heart." — Psalm 139:23</div>
+  <div class="word-prompt prompt-soul" id="prompt-soul">"My soul thirsts for God, for the living God." — Psalm 42:2</div>
+  <div class="word-prompt prompt-mind" id="prompt-mind">"Let this mind be in you which was also in Christ Jesus." — Philippians 2:5</div>
+  <div class="word-prompt prompt-strength" id="prompt-strength">"I can do all things through Christ who strengthens me." — Philippians 4:13</div>
+  <br>
+  <div class="field-label">✦ What the Holy Spirit Is Saying to Me</div>
+  <div class="field-hint">This is your sacred space. No right or wrong — just what God is speaking to your heart through this verse.</div>
+  <textarea id="f-spirit" class="tall" placeholder="Lord, what are You saying to me through this…"></textarea>
+</div>
+
+<div class="action-bar">
+  <button class="btn btn-clear" onclick="clearForm()">Clear</button>
+  <button class="btn btn-save" onclick="saveEntry()">Save Entry</button>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ===================== ENTRIES SCREEN ===================== -->
+
+<div id="screen-entries" class="screen">
+  <div class="entries-screen">
+    <div class="filter-row">
+      <button class="filter-pill active-all" onclick="filterEntries('all', this)">All</button>
+      <button class="filter-pill" onclick="filterEntries('heart', this)">❤ Heart</button>
+      <button class="filter-pill" onclick="filterEntries('soul', this)">✦ Soul</button>
+      <button class="filter-pill" onclick="filterEntries('mind', this)">✧ Mind</button>
+      <button class="filter-pill" onclick="filterEntries('strength', this)">⚡ Strength</button>
+    </div>
+    <div id="entries-count" class="entries-count"></div>
+    <div id="entries-list"></div>
+  </div>
+</div>
+
+<!-- ===================== DETAIL SCREEN ===================== -->
+
+<div id="screen-detail" class="screen">
+  <div class="detail-screen">
+    <button class="detail-back" onclick="showTab('entries')">← Back to Entries</button>
+    <div class="detail-content" id="detail-content"></div>
+  </div>
+</div>
+
+<!-- ===================== ABOUT SCREEN ===================== -->
+
+<div id="screen-about" class="screen">
+  <div class="about-screen">
+
+```
+<div class="about-verse-card">
+  <div class="verse-ref">Mark 12:30 — ESV</div>
+  <div class="verse-text">"And you shall love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength."</div>
+</div>
+
+<div class="about-section">
+  <h3>The Purpose of This Study</h3>
+  <p>This journal is a Spirit-led journey through the Great Commandment of Mark 12:30. The goal is not academic — it is encounter. To sit with every verse where each word appears and allow the Holy Spirit to reveal what loving God fully truly means.</p>
+  <p>Each entry you write is a brick in the foundation of what God is building through you.</p>
+</div>
+
+<div class="about-section">
+  <h3>The Four Dimensions</h3>
+  <div class="four-words">
+    <div class="word-card wc-heart">
+      <div class="word-card-name wn-heart">Heart</div>
+      <div class="word-card-heb">Hebrew: lev / lebab</div>
+      <div class="word-card-status status-active">Current Study</div>
+    </div>
+    <div class="word-card wc-soul">
+      <div class="word-card-name wn-soul">Soul</div>
+      <div class="word-card-heb">Hebrew: nephesh</div>
+      <div class="word-card-status status-upcoming">Coming Next</div>
+    </div>
+    <div class="word-card wc-mind">
+      <div class="word-card-name wn-mind">Mind</div>
+      <div class="word-card-heb">Greek: dianoia</div>
+      <div class="word-card-status status-upcoming">Upcoming</div>
+    </div>
+    <div class="word-card wc-strength">
+      <div class="word-card-name wn-strength">Strength</div>
+      <div class="word-card-heb">Greek: ischus</div>
+      <div class="word-card-status status-upcoming">Upcoming</div>
+    </div>
+  </div>
+</div>
+
+<div class="about-section">
+  <h3>Your Translation Toolkit</h3>
+  <p>Anchor translations (accuracy):</p>
+  <div class="trans-list" style="margin-bottom:12px;">
+    <span class="trans-pill anchor">ESV</span>
+    <span class="trans-pill anchor">NASB</span>
+  </div>
+  <p>Comparison translations:</p>
+  <div class="trans-list">
+    <span class="trans-pill">AMP</span>
+    <span class="trans-pill">CSB</span>
+    <span class="trans-pill">NKJV</span>
+    <span class="trans-pill">KJV</span>
+    <span class="trans-pill">MSG</span>
+    <span class="trans-pill">NIV</span>
+    <span class="trans-pill">NLT</span>
+  </div>
+</div>
+
+<div class="about-section">
+  <h3>How to Use This Journal</h3>
+  <p><strong style="color:var(--parchment)">1. Select your focus word</strong> at the top — Heart, Soul, Mind, or Strength.</p>
+  <p><strong style="color:var(--parchment)">2. Find your verse</strong> on BibleGateway.com — search the word in your translation and work through them in order.</p>
+  <p><strong style="color:var(--parchment)">3. Fill each section slowly</strong> — let each question create space for the Spirit to speak.</p>
+  <p><strong style="color:var(--parchment)">4. Section 7 is sacred</strong> — what God says to you personally is the seed of your book.</p>
+  <p><strong style="color:var(--parchment)">5. Save every entry</strong> — your archive builds over time and is organized by word.</p>
+</div>
+```
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  let entries = JSON.parse(localStorage.getItem('lgwa-entries') || '[]');
+  let currentWord = 'heart';
+  let currentFilter = 'all';
+
+  const wordConfig = {
+    heart: {
+      banner: 'Currently Studying: ❤ HEART',
+      bannerClass: 'banner-heart',
+      sectionColor: 'heart-color',
+      dynamicClass: 'dynamic-heart',
+      s4title: 'The Human Heart',
+      s4sub: "What does this reveal about man's heart?",
+      s4hint: 'What does this verse show about the nature, condition, or capacity of the human heart?',
+      s4placeholder: 'What is being said about the heart of man here?',
+      s5title: "God's Heart",
+      s5sub: 'What does this reveal about the Lord?',
+      s5hint: "What does this verse show about what God desires, feels, or knows about the heart?",
+      s5placeholder: "What does this say about God's heart toward us?",
+      s6sub: 'Loving God with all your heart',
+      s6hint: 'How does this verse deepen your understanding of loving God wholeheartedly?',
+      symbol: '❤'
+    },
+    soul: {
+      banner: 'Currently Studying: ✦ SOUL',
+      bannerClass: 'banner-soul',
+      sectionColor: 'soul-color',
+      dynamicClass: 'dynamic-soul',
+      s4title: 'The Human Soul',
+      s4sub: "What does this reveal about man's soul?",
+      s4hint: 'What does this verse show about the nature or depth of the human soul?',
+      s4placeholder: 'What is being said about the soul of man here?',
+      s5title: "God's Desire for the Soul",
+      s5sub: 'What does God say about the soul?',
+      s5hint: "What does this verse show about what God desires for or from the human soul?",
+      s5placeholder: "What does God desire of our soul?",
+      s6sub: 'Loving God with all your soul',
+      s6hint: 'How does this verse deepen your understanding of loving God with your whole soul?',
+      symbol: '✦'
+    },
+    mind: {
+      banner: 'Currently Studying: ✧ MIND',
+      bannerClass: 'banner-mind',
+      sectionColor: 'mind-color',
+      dynamicClass: 'dynamic-mind',
+      s4title: 'The Human Mind',
+      s4sub: "What does this reveal about man's mind?",
+      s4hint: 'What does this verse show about human thought, understanding, or reasoning?',
+      s4placeholder: 'What is being said about the mind of man here?',
+      s5title: "The Mind of God",
+      s5sub: "What does God reveal about the mind?",
+      s5hint: "What does this verse show about how God thinks, or what He desires for our minds?",
+      s5placeholder: "What does God say about the renewed or transformed mind?",
+      s6sub: 'Loving God with all your mind',
+      s6hint: 'How does this verse deepen your understanding of loving God with your full intellect?',
+      symbol: '✧'
+    },
+    strength: {
+      banner: 'Currently Studying: ⚡ STRENGTH',
+      bannerClass: 'banner-strength',
+      sectionColor: 'strength-color',
+      dynamicClass: 'dynamic-strength',
+      s4title: 'Human Strength',
+      s4sub: "What does this reveal about man's strength?",
+      s4hint: 'What does this verse show about human capacity, effort, or dependence?',
+      s4placeholder: 'What is being said about the strength of man here?',
+      s5title: "God's Strength",
+      s5sub: "What does this reveal about God's power?",
+      s5hint: "What does this verse show about God's strength, might, or how He empowers us?",
+      s5placeholder: "What does this say about God's strength or how He strengthens us?",
+      s6sub: 'Loving God with all your strength',
+      s6hint: 'How does this verse deepen your understanding of giving God your full effort and energy?',
+      symbol: '⚡'
+    }
+  };
+
+  function setWord(word) {
+    currentWord = word;
+    const cfg = wordConfig[word];
+
+    // Update selector buttons
+    document.querySelectorAll('.word-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.word-btn.' + word).classList.add('active');
+
+    // Update banner
+    const banner = document.getElementById('word-banner');
+    banner.textContent = cfg.banner;
+    banner.className = 'active-word-banner ' + cfg.bannerClass;
+
+    // Update section titles
+    document.querySelectorAll('.section-title').forEach(el => {
+      el.className = 'section-title ' + cfg.sectionColor;
+    });
+
+    // Update dynamic content
+    document.getElementById('s4-title').textContent = cfg.s4title;
+    document.getElementById('s4-sub').textContent = cfg.s4sub;
+    document.getElementById('s4-hint').textContent = cfg.s4hint;
+    document.getElementById('f-human').placeholder = cfg.s4placeholder;
+
+    document.getElementById('s5-title').textContent = cfg.s5title;
+    document.getElementById('s5-sub').textContent = cfg.s5sub;
+    document.getElementById('s5-hint').textContent = cfg.s5hint;
+    document.getElementById('f-god').placeholder = cfg.s5placeholder;
+
+    document.getElementById('s6-sub').textContent = cfg.s6sub;
+    document.getElementById('s6-hint').textContent = cfg.s6hint;
+
+    // Update revelation block
+    const rev = document.getElementById('revelation-block');
+    rev.className = 'dynamic-section ' + cfg.dynamicClass;
+
+    // Update prompts
+    document.querySelectorAll('.word-prompt').forEach(p => p.classList.remove('visible'));
+    document.getElementById('prompt-' + word).classList.add('visible');
+  }
+
+  function showTab(tab) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('screen-' + tab).classList.add('active');
+    const tabMap = { study: 0, entries: 1, about: 2, detail: 1 };
+    document.querySelectorAll('.tab-btn')[tabMap[tab]].classList.add('active');
+    if (tab === 'entries') renderEntries();
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  function saveEntry() {
+    const ref = document.getElementById('f-ref').value.trim();
+    const verse = document.getElementById('f-verse').value.trim();
+    if (!ref || !verse) { showToast('Please add a reference and verse'); return; }
+
+    const entry = {
+      id: Date.now(),
+      word: currentWord,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      ref, verse,
+      trans1name: document.getElementById('f-trans1-name').value.trim(),
+      trans1: document.getElementById('f-trans1').value.trim(),
+      trans2name: document.getElementById('f-trans2-name').value.trim(),
+      trans2: document.getElementById('f-trans2').value.trim(),
+      context: document.getElementById('f-context').value.trim(),
+      human: document.getElementById('f-human').value.trim(),
+      god: document.getElementById('f-god').value.trim(),
+      connection: document.getElementById('f-connection').value.trim(),
+      spirit: document.getElementById('f-spirit').value.trim(),
+    };
+
+    entries.unshift(entry);
+    localStorage.setItem('lgwa-entries', JSON.stringify(entries));
+    showToast(wordConfig[currentWord].symbol + ' Entry saved');
+    clearForm();
+  }
+
+  function clearForm() {
+    ['f-ref','f-verse','f-trans1-name','f-trans1','f-trans2-name','f-trans2',
+     'f-context','f-human','f-god','f-connection','f-spirit'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+  }
+
+  function filterEntries(word, btn) {
+    currentFilter = word;
+    document.querySelectorAll('.filter-pill').forEach(p => {
+      p.className = 'filter-pill';
+    });
+    btn.classList.add('active-' + (word === 'all' ? 'all' : word));
+    renderEntries();
+  }
+
+  function renderEntries() {
+    const list = document.getElementById('entries-list');
+    const countEl = document.getElementById('entries-count');
+    const filtered = currentFilter === 'all' ? entries : entries.filter(e => e.word === currentFilter);
+
+    if (filtered.length === 0) {
+      countEl.textContent = '';
+      list.innerHTML = `<div class="entries-empty"><div class="icon">📖</div><p>No entries yet${currentFilter !== 'all' ? ' for ' + currentFilter : ''}.<br>Begin your study above.</p></div>`;
+      return;
+    }
+
+    countEl.textContent = filtered.length + ' ' + (filtered.length === 1 ? 'Entry' : 'Entries');
+    list.innerHTML = filtered.map((e, i) => {
+      const idx = entries.indexOf(e);
+      const cfg = wordConfig[e.word];
+      return `
+        <div class="entry-card card-${e.word}" onclick="showDetail(${idx})">
+          <div class="entry-top">
+            <div class="entry-ref ref-${e.word}">${e.ref}</div>
+            <span class="entry-word-tag tag-${e.word}">${cfg.symbol} ${e.word}</span>
+          </div>
+          <div class="entry-preview">${e.verse}</div>
+          <div class="entry-bottom">
+            <div class="entry-date">${e.date}</div>
+            <button class="entry-delete" onclick="deleteEntry(event, ${idx})">×</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function showDetail(i) {
+    const e = entries[i];
+    const cfg = wordConfig[e.word];
+
+    const fields = [
+      ['Scripture Reference', e.ref],
+      ['The Verse', e.verse],
+      e.trans1 ? [(e.trans1name || 'Translation 1'), e.trans1] : null,
+      e.trans2 ? [(e.trans2name || 'Translation 2'), e.trans2] : null,
+      e.context ? ['Context', e.context] : null,
+      e.human ? [cfg.s4title, e.human] : null,
+      e.god ? [cfg.s5title, e.god] : null,
+      e.connection ? ['Connection to Mark 12:30', e.connection] : null,
+    ].filter(Boolean);
+
+    let html = `
+      <div class="detail-ref ref-${e.word}">${e.ref}</div>
+      <span class="detail-word-tag tag-${e.word}">${cfg.symbol} ${e.word.charAt(0).toUpperCase() + e.word.slice(1)}</span>
+    `;
+
+    fields.forEach(([label, val]) => {
+      html += `<div class="detail-field"><div class="detail-field-label">${label}</div><div class="detail-field-value">${val}</div></div>`;
+    });
+
+    if (e.spirit) {
+      html += `
+        <div class="detail-revelation rev-${e.word}">
+          <div class="detail-field-label">✦ What the Holy Spirit Said to Me</div>
+          <div class="detail-field-value">${e.spirit}</div>
+        </div>
+      `;
+    }
+
+    html += `<div style="margin-top:16px; font-size:11px; color:#8B7355; letter-spacing:1px;">Recorded ${e.date}</div>`;
+
+    document.getElementById('detail-content').innerHTML = html;
+    document.getElementById('screen-entries').classList.remove('active');
+    document.getElementById('screen-detail').classList.add('active');
+  }
+
+  function deleteEntry(event, i) {
+    event.stopPropagation();
+    if (confirm('Delete this entry?')) {
+      entries.splice(i, 1);
+      localStorage.setItem('lgwa-entries', JSON.stringify(entries));
+      renderEntries();
+      showToast('Entry deleted');
+    }
+  }
+</script>
+
+</body>
+</html>
